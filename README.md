@@ -121,11 +121,24 @@ pytest tests/test_api.py -v         # API endpoints
 
 Create `.env` in backend directory:
 
-```env
-HF_TOKEN=your_huggingface_token  # Optional
+# Hugging Face Configuration
+HF_TOKEN=your_hf_token #add your token here
 HF_MODEL_NAME=mistralai/Mistral-7B-Instruct-v0.2
 USE_INFERENCE_API=true
+
+# Embedding Model
+EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+
+# Database
 DATABASE_URL=sqlite+aiosqlite:///./phones.db
+
+# API Configuration
+API_HOST=0.0.0.0
+API_PORT=8000
+DEBUG=true
+
+# Rate Limiting
+RATE_LIMIT_PER_MINUTE=30
 ```
 
 ## Phone Database
