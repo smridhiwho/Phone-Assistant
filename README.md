@@ -32,12 +32,6 @@ npm install
 npm run dev
 ```
 
-### Docker (Full Stack)
-
-```bash
-docker-compose up --build
-```
-
 ## Project Structure
 
 ```
@@ -66,8 +60,6 @@ mykarmaa/
 │       ├── hooks/          # Custom hooks
 │       ├── services/       # API client
 │       └── store/          # Zustand state management
-│
-└── docker-compose.yml      # Full stack deployment
 ```
 
 ## API Endpoints
