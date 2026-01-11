@@ -15,12 +15,20 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./app ./app
 COPY ./scripts ./scripts
 
-# Expose port
-EXPOSE 8000
+# Create non-root user (required by HF Spaces)
+RUN useradd -m -u 1000 user
+USER user
+
+ENV HOME=/home/user \
+    PATH=/home/user/.local/bin:$PATH \
+    PYTHONUNBUFFERED=1
+
+# HF Spaces uses port 7860
+EXPOSE 7860
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD python -c "import httpx; httpx.get('http://localhost:8000/api/v1/health')"
+    CMD python -c "import httpx; httpx.get('http://localhost:7860/api/v1/health')"
 
-# Run with uvicorn
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run with uvicorn on port 7860
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "7860"]
