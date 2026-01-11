@@ -120,7 +120,7 @@ pytest tests/test_api.py -v         # API endpoints
 ## Configuration
 
 Create `.env` in backend directory:
-
+```
 # Hugging Face Configuration
 HF_TOKEN=your_hf_token #add your token here
 HF_MODEL_NAME=mistralai/Mistral-7B-Instruct-v0.2
