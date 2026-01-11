@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     use_inference_api: bool = True
 
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
-    database_url: str = "sqlite+aiosqlite:///./phones.db"
+    database_url: str = "sqlite+aiosqlite:////data/phone_assistant.db"
 
     api_host: str = "0.0.0.0"
     api_port: int = 8000
